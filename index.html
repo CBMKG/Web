@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTC TRX - Platform Transaksi Digital Profesional</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-container">
+                <div class="logo-icon">ANTC</div>
+                <h2>ANTC TRX</h2>
+            </div>
+            <div class="loading-spinner"></div>
+            <p>Memuat platform transaksi digital...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon-nav">ANTC</div>
+                <span>ANTC TRX</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="#transactions" class="nav-link" data-section="transactions">
+                    <i class="fas fa-list"></i>
+                    <span>Transaksi</span>
+                </a>
+                <a href="#order" class="nav-link" data-section="order">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Pesan</span>
+                </a>
+                <a href="#admin" class="nav-link admin-link" onclick="showAdminLogin()">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Admin</span>
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-grid"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Platform Terpercaya #1 di Indonesia
+                </div>
+                <h1 class="hero-title">
+                    Platform Transaksi Digital
+                    <span class="gradient-text">Profesional</span>
+                </h1>
+                <p class="hero-description">
+                    Solusi lengkap untuk semua kebutuhan digital Anda. Transaksi aman, proses cepat, dan layanan 24/7 dengan sistem otomatis terdepan.
+                </p>
+                <div class="hero-buttons">
+                    <button class="cta-button primary" onclick="scrollToSection('order')">
+                        <i class="fas fa-rocket"></i>
+                        Mulai Transaksi
+                    </button>
+                    <button class="cta-button secondary" onclick="scrollToSection('pricing')">
+                        <i class="fas fa-info-circle"></i>
+                        Lihat Harga
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="10000">0</div>
+                        <div class="stat-label">Transaksi Sukses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="5000">0</div>
+                        <div class="stat-label">Pelanggan Aktif</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label">% Kepuasan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transactions List Section -->
+        <section id="transactions" class="transactions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Daftar Transaksi</h2>
+                    <p class="section-subtitle">Lihat semua transaksi yang telah dibuat</p>
+                </div>
+                <div class="public-transactions-list" id="publicTransactionsList">
+                    <!-- Public transactions will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Section -->
+        <section id="order" class="order-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Buat Transaksi</h2>
+                    <p class="section-subtitle">Isi form di bawah untuk memulai transaksi Anda</p>
+                </div>
+                <div class="order-form-container">
+                    <form id="orderForm" class="order-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="serviceType">
+                                    <i class="fas fa-credit-card"></i>
+                                    Jenis Transaksi
+                                </label>
+                                <select id="serviceType" required>
+                                    <option value="">Pilih Jenis Transaksi</option>
+                                    <option value="cdid">🎮 CDid</option>
+                                    <option value="garden">🌱 Grow a Garden</option>
+                                    <option value="akun">👤 Akun</option>
+                                    <option value="bloxfruit">🎯 Blox Fruit</option>
+                                    <option value="joki-ml">🎮 Joki Mobile Legends</option>
+                                    <option value="joki-pubg">🎯 Joki PUBG</option>
+                                    <option value="top-up-ff">💎 Top Up Free Fire</option>
+                                    <option value="top-up-ml">💎 Top Up Mobile Legends</option>
+                                    <option value="joki-valorant">🎮 Joki Valorant</option>
+                                    <option value="netflix">📺 Akun Netflix</option>
+                                    <option value="spotify">🎵 Akun Spotify</option>
+                                    <option value="steam">🎮 Steam Wallet</option>
+                                    <option value="other">🔧 Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="urgency">
+                                    <i class="fas fa-clock"></i>
+                                    Tingkat Urgensi
+                                </label>
+                                <select id="urgency">
+                                    <option value="normal">Normal (24-48 jam)</option>
+                                    <option value="fast">Cepat (12-24 jam) +20%</option>
+                                    <option value="instant">Instan (1-6 jam) +50%</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">
+                                    <i class="fas fa-user"></i>
+                                    Nama Lengkap
+                                </label>
+                                <input type="text" id="customerName" placeholder="Masukkan nama lengkap" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">
+                                    <i class="fas fa-envelope"></i>
+                                    Email
+                                </label>
+                                <input type="email" id="customerEmail" placeholder="contoh@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerPhone">
+                                    <i class="fas fa-phone"></i>
+                                    No. WhatsApp
+                                </label>
+                                <input type="tel" id="customerPhone" placeholder="08xxxxxxxxxx" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="orderAmount">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    Jumlah Transaksi (Rp)
+                                </label>
+                                <input type="number" id="orderAmount" min="10000" placeholder="100000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderDetails">
+                                <i class="fas fa-file-alt"></i>
+                                Detail Transaksi
+                            </label>
+                            <textarea id="orderDetails" rows="4" placeholder="Jelaskan detail transaksi Anda secara lengkap..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderPhoto">
+                                <i class="fas fa-camera"></i>
+                                Upload Foto (Opsional)
+                            </label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="orderPhoto" accept="image/*" class="file-input">
+                                <div class="file-input-button" onclick="document.getElementById('orderPhoto').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Pilih Foto Transaksi</span>
+                                </div>
+                            </div>
+                            <small>Upload screenshot atau foto pendukung transaksi</small>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="form-btn secondary" onclick="resetForm()">
+                                <i class="fas fa-undo"></i>
+                                Reset Form
+                            </button>
+                            <button type="submit" class="form-btn primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Kirim Transaksi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Login Modal -->
+        <div id="adminModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        <i class="fas fa-shield-alt"></i>
+                        Login Administrator
+                    </h2>
+                    <span class="close" onclick="closeAdminModal()">&times;</span>
+                </div>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminUsername">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <input type="text" id="adminUsername" placeholder="Masukkan username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <input type="password" id="adminPassword" placeholder="Masukkan password" required>
+                    </div>
+                    <button type="submit" class="form-btn primary full-width">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Masuk
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="admin-panel" style="display: none;">
+            <div class="admin-header">
+                <div class="admin-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h2>Dashboard Administrator</h2>
+                </div>
+                <div class="admin-actions">
+                    <button class="admin-btn" onclick="exportData()">
+                        <i class="fas fa-download"></i>
+                        Export Data
+                    </button>
+                    <button class="admin-btn danger" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Transaksi</h3>
+                            <div class="stat-number" id="totalTransactions">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Pending Orders</h3>
+                            <div class="stat-number" id="pendingOrders">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Revenue Hari Ini</h3>
+                            <div class="stat-number" id="todayRevenue">Rp 0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Pelanggan</h3>
+                            <div class="stat-number" id="totalCustomers">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-sections">
+                    <div class="admin-section main">
+                        <div class="section-header">
+                            <h3>
+                                <i class="fas fa-list"></i>
+                                Daftar Transaksi
+                            </h3>
+                            <div class="section-actions">
+                                <select id="filterStatus" onchange="filterTransactions()">
+                                    <option value="">Semua Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="failed">Failed</option>
+                                </select>
+                                <button class="admin-btn" onclick="refreshTransactions()">
+                                    <i class="fas fa-sync-alt"></i>
+                                    Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="transactions-list" id="transactionsList">
+                            <!-- Transactions will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="admin-section sidebar">
+                        <div class="section-header">
+                            <h3>
+                                <i class="fab fa-discord"></i>
+                                Discord Webhook Manager
+                            </h3>
+                        </div>
+
+                        <div class="webhook-manager">
+                            <div class="webhook-selector">
+                                <label for="webhookSelect">
+                                    <i class="fas fa-cog"></i>
+                                    Pilih Webhook
+                                </label>
+                                <select id="webhookSelect" onchange="loadWebhook()">
+                                    <option value="">Pilih Webhook (1-10)</option>
+                                    <option value="1">Webhook 1 - Transaksi</option>
+                                    <option value="2">Webhook 2 - Announce</option>
+                                    <option value="3">Webhook 3 - Custom</option>
+                                    <option value="4">Webhook 4 - Foto Announce</option>
+                                    <option value="5">Webhook 5 - Support</option>
+                                    <option value="6">Webhook 6 - VIP</option>
+                                    <option value="7">Webhook 7 - Promo</option>
+                                    <option value="8">Webhook 8 - Update</option>
+                                    <option value="9">Webhook 9 - Emergency</option>
+                                    <option value="10">Webhook 10 - Backup</option>
+                                </select>
+                            </div>
+
+                            <form id="webhookForm">
+                                <div class="form-group">
+                                    <label for="webhookFunction">
+                                        <i class="fas fa-tasks"></i>
+                                        Fungsi Webhook
+                                    </label>
+                                    <select id="webhookFunction" required>
+                                        <option value="">Pilih Fungsi</option>
+                                        <option value="transaction">📋 Kirim Transaksi</option>
+                                        <option value="announce">📢 Kirim Announce</option>
+                                        <option value="photo_announce">📸 Kirim Foto Announce</option>
+                                        <option value="support">🛠️ Support</option>
+                                        <option value="custom">🔧 Custom</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="discordWebhook">
+                                        <i class="fas fa-link"></i>
+                                        Discord Webhook URL
+                                    </label>
+                                    <input type="url" id="discordWebhook" placeholder="https://discord.com/api/webhooks/..." required>
+                                    <small>URL webhook Discord untuk fungsi yang dipilih</small>
+                                </div>
+
+                                <button type="submit" class="form-btn primary">
+                                    <i class="fas fa-save"></i>
+                                    Simpan Webhook
+                                </button>
+                            </form>
+
+                            <div class="webhook-controls">
+                                <h4>Kontrol Webhook</h4>
+                                <div class="webhook-status">
+                                    <span>Status: </span>
+                                    <span id="webhookStatus">❌ Not Set</span>
+                                </div>
+                                <div class="webhook-actions">
+                                    <button onclick="testWebhook()" class="form-btn secondary">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Test Webhook
+                                    </button>
+                                    <button onclick="sendAnnounce()" class="form-btn secondary">
+                                        <i class="fas fa-bullhorn"></i>
+                                        Kirim Announce
+                                    </button>
+                                    <button onclick="sendPhotoAnnounce()" class="form-btn secondary">
+                                        <i class="fas fa-camera"></i>
+                                        Foto Announce
+                                    </button>
+                                    <button onclick="sendCustomMessage()" class="form-btn secondary">
+                                        <i class="fas fa-cog"></i>
+                                        Pesan Custom
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="announce-section" id="announceSection" style="display: none;">
+                                <h4>Buat Announce</h4>
+                                <div class="form-group">
+                                    <label for="announceTitle">
+                                        <i class="fas fa-heading"></i>
+                                        Judul Announce
+                                    </label>
+                                    <input type="text" id="announceTitle" placeholder="Masukkan judul announce">
+                                </div>
+                                <div class="form-group">
+                                    <label for="announceMessage">
+                                        <i class="fas fa-comment"></i>
+                                        Pesan Announce
+                                    </label>
+                                    <textarea id="announceMessage" rows="4" placeholder="Tulis pesan announce..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="announcePhoto">
+                                        <i class="fas fa-image"></i>
+                                        Upload Foto (Opsional)
+                                    </label>
+                                    <div class="file-input-wrapper">
+                                        <input type="file" id="announcePhoto" accept="image/*" class="file-input">
+                                        <div class="file-input-button" onclick="document.getElementById('announcePhoto').click()">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <span>Pilih Foto Announce</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="publishAnnounce()" class="form-btn primary">
+                                    <i class="fas fa-send"></i>
+                                    Publikasikan Announce
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="quick-stats">
+                            <h4>Statistik Cepat</h4>
+                            <div class="quick-stat-item">
+                                <span>Transaksi Hari Ini:</span>
+                                <strong id="todayTransactions">0</strong>
+                            </div>
+                            <div class="quick-stat-item">
+                                <span>Rata-rata Order:</span>
+                                <strong id="avgOrderValue">Rp 0</strong>
+                            </div>
+                            <div class="quick-stat-item">
+                                <span>Success Rate:</span>
+                                <strong id="successRate">0%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon-footer">ANTC</div>
+                        <span>ANTC TRX</span>
+                    </div>
+                    <p>Platform transaksi digital terpercaya dengan layanan terlengkap dan keamanan terjamin.</p>
+                    <div class="social-links">
+                        <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Transaksi</h3>
+                    <ul>
+                        <li><a href="#order">Transfer Dana</a></li>
+                        <li><a href="#order">Pembayaran Digital</a></li>
+                        <li><a href="#order">Top Up Pulsa & Data</a></li>
+                        <li><a href="#order">Transaksi Kripto</a></li>
+                        <li><a href="#order">QRIS Payment</a></li>
+                        <li><a href="#order">Remitansi Global</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Informasi</h3>
+                    <ul>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#terms">Syarat & Ketentuan</a></li>
+                        <li><a href="#privacy">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@digistorepro.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 813-3003-2894</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2030 ANTC TRX. All rights reserved.</p>
+                <p>Dibuat dengan ❤️ untuk komunitas digital Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <div class="fab-button" onclick="toggleFab()">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="fab-menu">
+            <a href="#order" class="fab-item" title="Buat Transaksi">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="https://wa.me/6281330032894" class="fab-item" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="fab-item" title="Live Chat">
+                <i class="fas fa-comments"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
